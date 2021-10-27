@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         title: Text('Control Pad Example'),
       ),
       body: Container(
-        child: JoystickView(),
+        child: JoystickView(interval: Duration(milliseconds: 500), onDirectionChanged: (double degrees, double distance) { print('$degrees, $distance'); },),
       ),
     );
   }
