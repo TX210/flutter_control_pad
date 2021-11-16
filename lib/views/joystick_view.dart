@@ -37,6 +37,13 @@ class JoystickView extends StatelessWidget {
   /// Defaults to [null] which means there will be no [Opacity] widget used
   final double opacity;
 
+  // Indicates what type joystick should return
+  //
+  // Instead of degrees/distance returns coordinates if true
+  //
+  // Defaults to [false]
+  final bool returnCoordinates;
+
   /// Callback to be called when user pans the joystick
   ///
   /// Defaults to [null]
@@ -63,13 +70,15 @@ class JoystickView extends StatelessWidget {
       this.backgroundColor = Colors.blueGrey,
       this.innerCircleColor = Colors.blueGrey,
       this.opacity = 1,
+      this.returnCoordinates = false,
       required this.onDirectionChanged,
       required this.interval,
       this.showArrows = true});
 
   @override
   Widget build(BuildContext context) {
-    var actualSize = size ?? _math.min(MediaQuery.of(context).size.width,
+    var actualSize = size ??
+        _math.min(MediaQuery.of(context).size.width,
                 MediaQuery.of(context).size.height) *
             0.5;
     var innerCircleSize = actualSize / 2;
@@ -77,7 +86,7 @@ class JoystickView extends StatelessWidget {
     var joystickInnerPosition = _calculatePositionOfInnerCircle(
         lastPosition, innerCircleSize, actualSize, Offset(0, 0));
 
-    DateTime? _callbackTimestamp;
+    DateTime? _callbackTimestamp = DateTime.now();
 
     return Center(
       child: StatefulBuilder(
@@ -196,6 +205,9 @@ class JoystickView extends StatelessWidget {
     var _callbackTimestamp = callbackTimestamp;
     if (_canCallOnDirectionChanged(callbackTimestamp)) {
       _callbackTimestamp = DateTime.now();
+      if (returnCoordinates) {
+        onDirectionChanged(offset.dx, offset.dy);
+      }
       onDirectionChanged(degrees, normalizedDistance);
     }
 
