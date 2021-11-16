@@ -116,7 +116,7 @@ class JoystickView extends StatelessWidget {
                 setState(() => lastPosition = details.localPosition);
               },
               onPanEnd: (details) {
-                _callbackTimestamp = null;
+                _callbackTimestamp = DateTime.now();
                 onDirectionChanged(0, 0);
                 joystickInnerPosition = _calculatePositionOfInnerCircle(
                     Offset(innerCircleSize, innerCircleSize),
