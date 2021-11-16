@@ -69,7 +69,8 @@ class JoystickView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var actualSize = size ?? _math.min(MediaQuery.of(context).size.width,
+    var actualSize = size ??
+        _math.min(MediaQuery.of(context).size.width,
                 MediaQuery.of(context).size.height) *
             0.5;
     var innerCircleSize = actualSize / 2;
@@ -77,7 +78,7 @@ class JoystickView extends StatelessWidget {
     var joystickInnerPosition = _calculatePositionOfInnerCircle(
         lastPosition, innerCircleSize, actualSize, Offset(0, 0));
 
-    DateTime? _callbackTimestamp;
+    DateTime? _callbackTimestamp = DateTime.now();
 
     return Center(
       child: StatefulBuilder(
