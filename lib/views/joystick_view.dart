@@ -64,6 +64,8 @@ class JoystickView extends StatelessWidget {
   /// Defaults to [true]
   final bool showArrows;
 
+  final Image? buttonImage;
+
   JoystickView(
       {this.size,
       this.iconsColor = Colors.white54,
@@ -73,7 +75,8 @@ class JoystickView extends StatelessWidget {
       this.returnCoordinates = false,
       required this.onDirectionChanged,
       required this.interval,
-      this.showArrows = true});
+      this.showArrows = true,
+      this.buttonImage});
 
   @override
   Widget build(BuildContext context) {
@@ -96,14 +99,14 @@ class JoystickView extends StatelessWidget {
               CircleView.joystickCircle(
                 actualSize,
                 backgroundColor,
-              ),
+                  buttonImage!),
               Positioned(
                 top: joystickInnerPosition.dy,
                 left: joystickInnerPosition.dx,
                 child: CircleView.joystickInnerCircle(
                   actualSize / 2,
                   innerCircleColor,
-                ),
+                    buttonImage!),
               ),
               if (showArrows) ...createArrows(),
             ],
