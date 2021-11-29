@@ -64,7 +64,7 @@ class JoystickView extends StatelessWidget {
   /// Defaults to [true]
   final bool showArrows;
 
-  final Image? buttonImage;
+  final buttonImage;
 
   JoystickView(
       {this.size,
@@ -96,8 +96,7 @@ class JoystickView extends StatelessWidget {
         builder: (context, setState) {
           Widget joystick = Stack(
             children: <Widget>[
-              CircleView.joystickCircle(
-                  actualSize, backgroundColor, buttonImage),
+              CircleView.joystickCircle(actualSize, backgroundColor),
               Positioned(
                 top: joystickInnerPosition.dy,
                 left: joystickInnerPosition.dx,

@@ -50,9 +50,7 @@ class CircleView extends StatelessWidget {
     );
   }
 
-  factory CircleView.joystickCircle(
-          double size, Color color, Image? buttonImage) =>
-      CircleView(
+  factory CircleView.joystickCircle(double size, Color color) => CircleView(
         size: size,
         color: color,
         border: Border.all(
@@ -74,6 +72,7 @@ class CircleView extends StatelessWidget {
       CircleView(
         size: size,
         color: color,
+        buttonImage: buttonImage,
         border: Border.all(
           color: Colors.black26,
           width: 2.0,
