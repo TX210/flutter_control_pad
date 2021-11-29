@@ -97,16 +97,12 @@ class JoystickView extends StatelessWidget {
           Widget joystick = Stack(
             children: <Widget>[
               CircleView.joystickCircle(
-                actualSize,
-                backgroundColor,
-                  buttonImage!),
+                  actualSize, backgroundColor, buttonImage),
               Positioned(
                 top: joystickInnerPosition.dy,
                 left: joystickInnerPosition.dx,
                 child: CircleView.joystickInnerCircle(
-                  actualSize / 2,
-                  innerCircleColor,
-                    buttonImage!),
+                    actualSize / 2, innerCircleColor, buttonImage),
               ),
               if (showArrows) ...createArrows(),
             ],
